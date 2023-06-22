@@ -15,15 +15,15 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", argc);
-		return (EXIT_FAILURE);
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
 
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
-		fprintf(stderr, "Error: Failed to open file\n");
-		return (EXIT_FAILURE);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
 
 	while (fgets(line, sizeof(line), file))
@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 		line[strcspn(line, "\n")] = '\0';  /* delete trailing newline character */
 
 		opcode = strtok(line, " ");
+
 		if (strcmp(opcode, "push") == 0)
 		{
 			value_str = strtok(NULL, " ");
@@ -49,17 +50,22 @@ int main(int argc, char *argv[])
 			}
 			temp = push(value, temp, line_num);
 		}
-		if (strcmp(opcode, "pall") == 0)
+		else if (strcmp(opcode, "pall") == 0)
 		{
 			pall(temp);
 		}
-		if (strcmp(opcode, "pint") == 0)
+		else if (strcmp(opcode, "pint") == 0)
 		{
 			pint(temp, line_num);
 		}
-		else if (strcmp(opcode, "pop") == 0)
+		else if  (strcmp(opcode, "pop") == 0)
 		{
 			pop(&temp, line_num);
+		}
+		else
+		{
+			printf("L%d: unknown instruction %s\n", line_num, opcode);
+			exit(EXIT_FAILURE);
 		}
 	}
 	free_monty_list(temp);

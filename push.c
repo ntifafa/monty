@@ -3,7 +3,9 @@
 /**
  * push - pushes an element to the stack
  * @val: value to be added
+ * @temp: linked list
  * @line_num: line number of arg
+ * Return: a pointer
 */
 
 stack_t *push(int val, stack_t *temp, int line_num)
@@ -18,8 +20,8 @@ stack_t *push(int val, stack_t *temp, int line_num)
 	}
 	if (new_node == NULL)
 	{
-		fprintf(stderr, "Error: Failed to allocate memory\n");
-		return (NULL);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = val;

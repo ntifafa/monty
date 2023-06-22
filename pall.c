@@ -2,6 +2,8 @@
 
 /**
  * pall - print all elements of a stack
+ * @temp: linked list
+ * Return: nothing
 */
 
 void pall(stack_t *temp)

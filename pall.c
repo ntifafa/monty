@@ -4,7 +4,7 @@
  * pall - print all elements of a stack
 */
 
-void pall(void)
+void pall(stack_t *temp)
 {
 	stack_t *current = temp;
 

@@ -1,12 +1,13 @@
 #include "monty.h"
 
-stack_t *temp;
+
 
 int main(int argc, char *argv[])
 {
-	char line[100], *opcode;
-	int line_num, value;
+	char line[100], *opcode, *value_str;
+	int line_num = 0, value;
 	FILE *file;
+	stack_t *temp = NULL;
 
 	if (argc != 2)
 	{
@@ -21,7 +22,6 @@ int main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 
-	line_num = 0;
 	while (fgets(line, sizeof(line), file))
 	{
 		line_num++;
@@ -30,24 +30,24 @@ int main(int argc, char *argv[])
 		opcode = strtok(line, " ");
 		if (strcmp(opcode, "push") == 0)
 		{
-			char *value_str = strtok(NULL, " ");
+			value_str = strtok(NULL, " ");
 
 			if (value_str == NULL)
 			{
-				fprintf(stderr, "Error: L%d: Usage: push <int>\n", line_num);
+				fprintf(stderr, "Error: L%d: usage: push integer\n", line_num);
 				return (EXIT_FAILURE);
 			}
 			value = atoi(value_str);
 			if (value == 0 && strcmp(value_str, "0") != 0)
 			{
-				fprintf(stderr, "Error: L%d: Usage: push <int>\n", line_num);
+				fprintf(stderr, "Error: L%d: usage: push integer\n", line_num);
 				return (EXIT_FAILURE);
 			}
-			push(value, line_num);
+			temp = push(value, temp, line_num);
 		}
 		else if (strcmp(opcode, "pall") == 0)
 		{
-			pall();
+			pall(temp);
 		}
 	}
 	fclose(file);

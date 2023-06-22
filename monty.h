@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 
 
 /**
@@ -36,11 +37,16 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*Helper functions*/
+int _isdigit(int c);
+void operation(char *opcode, char *value_str, int value,
+ stack_t *temp, char line[100], int line_num);
+
 /*put and print all operations*/
-void push(int val, int line_num);
-void pall(void);
+stack_t *push(int val, stack_t *temp, int line_num);
+void pall(stack_t *temp);
 
 /*shared declaration*/
-extern stack_t *temp;
+/*extern stack_t *temp;*/
 
 #endif

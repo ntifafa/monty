@@ -39,8 +39,7 @@ typedef struct instruction_s
 
 /*Helper functions*/
 int _isdigit(int c);
-void operation(char *opcode, char *value_str, int value,
-stack_t *temp, char line[100], int line_num);
+stack_t *operation(char line[100], stack_t *temp, int line_num);
 
 /*put and print all operations*/
 stack_t *push(int val, stack_t *temp, int line_num);

@@ -1,9 +1,18 @@
 #include "monty.h"
+/**
+ * operation - switches between the opcodes
+ * @line: input lines from file
+ * @temp: stack
+ * @line_num: line number on command line
+ * Return: stack
+ */
 
-void operation(char *opcode, char *value_str, int value,
-stack_t *temp, char line[100], int line_num)
+stack_t *operation(char line[100], stack_t *temp, int line_num)
 {
-		opcode = strtok(line, " ");
+	char *value_str, *opcode;
+	int value;
+
+	opcode = strtok(line, " ");
 		if (strcmp(opcode, "push") == 0)
 		{
 			value_str = strtok(NULL, " ");
@@ -14,16 +23,24 @@ stack_t *temp, char line[100], int line_num)
 				exit(EXIT_FAILURE);
 			}
 			value = atoi(value_str);
-			if (value == 0 && strcmp(value_str, "0") != 0)
-			{
-				fprintf(stderr, "Error: L%d: usage: push integer\n", line_num);
-				exit(EXIT_FAILURE);
-			}
 			temp = push(value, temp, line_num);
 		}
 		else if (strcmp(opcode, "pall") == 0)
-		{
 			pall(temp);
+		else if (strcmp(opcode, "pint") == 0)
+			pint(temp, line_num);
+		else if  (strcmp(opcode, "pop") == 0)
+			pop(&temp, line_num);
+		else if  (strcmp(opcode, "swap") == 0)
+			swap(&temp, line_num);
+		else if  (strcmp(opcode, "nop") == 0)
+			nop();
+		else if (strcmp(opcode, "add") == 0)
+			add(&temp, line_num);
+		else
+		{
+			printf("L%d: unknown instruction %s\n", line_num, opcode);
+			exit(EXIT_FAILURE);
 		}
-
+		return (temp);
 }

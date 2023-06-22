@@ -35,7 +35,7 @@ stack_t *push(int val, stack_t *temp, int line_num)
 		new_node->prev = NULL;
 		new_node->next = temp;
 	}
-	
+
 	temp = new_node;
 	return (temp);
 }

@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/** 
+/**
  * check_spaces - checks if the user input only spaces.
  * @line: The pointer to input string.
  * Return: 1 on success, 0 on failure

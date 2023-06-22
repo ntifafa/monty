@@ -1,6 +1,10 @@
 #include "monty.h"
-
-
+/**
+ * main - entry point
+ * @argc: count of args
+ * @argv: array of args
+ * Return: 0 (success)
+ */
 
 int main(int argc, char *argv[])
 {
@@ -58,6 +62,7 @@ int main(int argc, char *argv[])
 			pop(&temp, line_num);
 		}
 	}
+	free_monty_list(temp);
 	fclose(file);
 	return (EXIT_SUCCESS);
 }

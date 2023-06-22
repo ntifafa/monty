@@ -29,10 +29,10 @@ int main(int argc, char *argv[])
 	while (fgets(line, sizeof(line), file))
 	{
 		line_num++;
-		line[strcspn(line, "\n")] = '\0';  /* delete trailing newline character */
+		/* line[strcspn(line, "\n")] = '\0 ';*/  /* delete trailing newline character */
 
-		if (*line == "\n" || check_spaces(line))
-			return;
+		if (line[0] == '\0' || check_spaces(line))
+			continue;
 
 		opcode = strtok(line, " ");
 

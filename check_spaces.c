@@ -10,7 +10,7 @@ int check_spaces(char *line)
 {
 	int i = 0;
 
-	line[_strlen(line) - 1] = '\0';
+	line[strlen(line) - 1] = '\0';
 	while (line[i] != '\0')
 	{
 		if (line[i] != ' ')

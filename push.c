@@ -11,7 +11,6 @@
 stack_t *push(int val, stack_t *temp, int line_num)
 {
 	stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
-	/*stack_t *temp = NULL;*/
 
 	if (val > INT_MAX || val < INT_MIN)
 	{
@@ -23,16 +22,20 @@ stack_t *push(int val, stack_t *temp, int line_num)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
 	new_node->n = val;
-	new_node->prev = NULL;
-	new_node->next = temp;
-	if (temp != NULL)
+	if (temp == NULL) /* checking for an empty list */
+	{
+		new_node->prev = NULL;
+		new_node->next = NULL;
+		temp = new_node;
+	}
+	else if (temp != NULL)
 	{
 		temp->prev = new_node;
+		new_node->prev = NULL;
+		new_node->next = temp;
 	}
+	
 	temp = new_node;
-
-	/*(void)line_num;*/
 	return (temp);
 }

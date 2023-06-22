@@ -65,6 +65,10 @@ int main(int argc, char *argv[])
 		{
 			pop(&temp, line_num);
 		}
+		else if  (strcmp(opcode, "nop") == 0)
+		{
+			nop();
+		}
 		else
 		{
 			printf("L%d: unknown instruction %s\n", line_num, opcode);

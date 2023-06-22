@@ -29,8 +29,6 @@ int main(int argc, char *argv[])
 	while (fgets(line, sizeof(line), file))
 	{
 		line_num++;
-		/* line[strcspn(line, "\n")] = '\0 ';*/  /* delete trailing newline character */
-
 		if (line[0] == '\0' || check_spaces(line))
 			continue;
 
@@ -46,11 +44,7 @@ int main(int argc, char *argv[])
 				return (EXIT_FAILURE);
 			}
 			value = atoi(value_str);
-			/* if (value == 0 && strcmp(value_str, "0") != 0) */
-			/*{*/
-				/*fprintf(stderr, "Error: L%d: usage: push integer\n", line_num);*/
-				/*return (EXIT_FAILURE);*/
-			/*}*/
+		
 			temp = push(value, temp, line_num);
 		}
 		else if (strcmp(opcode, "pall") == 0)
@@ -65,9 +59,17 @@ int main(int argc, char *argv[])
 		{
 			pop(&temp, line_num);
 		}
+		else if  (strcmp(opcode, "swap") == 0)
+		{
+			swap(&temp, line_num);
+		}
 		else if  (strcmp(opcode, "nop") == 0)
 		{
 			nop();
+		}
+		else if (strcmp(opcode, "add") == 0)
+		{
+			add(&temp, line_num);
 		}
 		else
 		{

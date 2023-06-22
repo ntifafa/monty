@@ -48,6 +48,7 @@ void pall(stack_t *temp);
 void pint(stack_t *temp, int line_num);
 void pop(stack_t **temp, int line_num);
 void free_monty_list(stack_t *temp);
+int check_spaces(char *line);
 
 /*shared declaration*/
 /*extern stack_t *temp;*/

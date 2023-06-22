@@ -13,7 +13,7 @@ stack_t *push(int val, stack_t *temp, int line_num)
 	stack_t *new_node = (stack_t *)malloc(sizeof(stack_t));
 	/*stack_t *temp = NULL;*/
 
-	if (val > INT_MAX || val < INT_MIN || val == 0)
+	if (val > INT_MAX || val < INT_MIN)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		exit(EXIT_FAILURE);

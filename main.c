@@ -31,6 +31,9 @@ int main(int argc, char *argv[])
 		line_num++;
 		line[strcspn(line, "\n")] = '\0';  /* delete trailing newline character */
 
+		if (*line == "\n" || check_spaces(line))
+			return;
+
 		opcode = strtok(line, " ");
 
 		if (strcmp(opcode, "push") == 0)
@@ -43,11 +46,11 @@ int main(int argc, char *argv[])
 				return (EXIT_FAILURE);
 			}
 			value = atoi(value_str);
-			if (value == 0 && strcmp(value_str, "0") != 0)
-			{
-				fprintf(stderr, "Error: L%d: usage: push integer\n", line_num);
-				return (EXIT_FAILURE);
-			}
+			/* if (value == 0 && strcmp(value_str, "0") != 0) */
+			/*{*/
+				/*fprintf(stderr, "Error: L%d: usage: push integer\n", line_num);*/
+				/*return (EXIT_FAILURE);*/
+			/*}*/
 			temp = push(value, temp, line_num);
 		}
 		else if (strcmp(opcode, "pall") == 0)

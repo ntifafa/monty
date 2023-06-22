@@ -45,6 +45,8 @@ void operation(char *opcode, char *value_str, int value,
 /*put and print all operations*/
 stack_t *push(int val, stack_t *temp, int line_num);
 void pall(stack_t *temp);
+void pint(stack_t *temp, int line_num);
+void pop(stack_t **temp, int line_num);
 
 /*shared declaration*/
 /*extern stack_t *temp;*/

@@ -45,9 +45,17 @@ int main(int argc, char *argv[])
 			}
 			temp = push(value, temp, line_num);
 		}
-		else if (strcmp(opcode, "pall") == 0)
+		if (strcmp(opcode, "pall") == 0)
 		{
 			pall(temp);
+		}
+		if (strcmp(opcode, "pint") == 0)
+		{
+			pint(temp, line_num);
+		}
+		else if (strcmp(opcode, "pop") == 0)
+		{
+			pop(&temp, line_num);
 		}
 	}
 	fclose(file);

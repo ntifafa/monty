@@ -41,6 +41,8 @@ typedef struct instruction_s
 int _isdigit(int c);
 stack_t *operation(char line[100], stack_t *temp, int line_num);
 int findchar(char *value_str, char *search);
+void part1(stack_t *temp, char *opcode, int line_num);
+void part2(stack_t *temp, char *opcode, int line_num);
 
 /*put and print all operations*/
 stack_t *push(int val, stack_t *temp, int line_num);
@@ -52,6 +54,11 @@ void nop(void);
 void free_monty_list(stack_t *temp);
 int check_spaces(char *line);
 void add(stack_t **temp, int line_num);
+void sub(stack_t **temp, int line_num);
+void mul(stack_t **temp, int line_num);
+void divide(stack_t **temp, int line_num);
+void mod(stack_t **temp, int line_num);
+
 
 /*shared declaration*/
 /*extern stack_t *temp;*/

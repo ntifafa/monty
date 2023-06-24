@@ -40,6 +40,7 @@ typedef struct instruction_s
 /*Helper functions*/
 int _isdigit(int c);
 stack_t *operation(char line[100], stack_t *temp, int line_num);
+int findchar(char *value_str, char *search);
 
 /*put and print all operations*/
 stack_t *push(int val, stack_t *temp, int line_num);

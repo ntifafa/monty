@@ -11,13 +11,14 @@ stack_t *operation(char line[100], stack_t *temp, int line_num)
 {
 	char *value_str, *opcode;
 	int value;
+	char *search = "abcdedfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	opcode = strtok(line, " ");
 		if (strcmp(opcode, "push") == 0)
 		{
 			value_str = strtok(NULL, " ");
 
-			if (value_str == NULL)
+			if (value_str == NULL || findchar(value_str, search))
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_num);
 				exit(EXIT_FAILURE);

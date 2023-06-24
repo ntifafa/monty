@@ -19,7 +19,7 @@ stack_t *operation(char line[100], stack_t *temp, int line_num)
 
 			if (value_str == NULL)
 			{
-				fprintf(stderr, "Error: L%d: usage: push integer\n", line_num);
+				fprintf(stderr, "L%d: usage: push integer\n", line_num);
 				exit(EXIT_FAILURE);
 			}
 			value = atoi(value_str);
@@ -39,7 +39,7 @@ stack_t *operation(char line[100], stack_t *temp, int line_num)
 			add(&temp, line_num);
 		else
 		{
-			printf("L%d: unknown instruction %s\n", line_num, opcode);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
 			exit(EXIT_FAILURE);
 		}
 		return (temp);

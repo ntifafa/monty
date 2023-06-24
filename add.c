@@ -8,13 +8,15 @@
 void add(stack_t **temp, int line_num)
 {
 	stack_t *first = *temp;
-	stack_t *second = (*temp)->next;
+	stack_t *second;
 
-	if (*temp == NULL) /* checking if list is empty */
+	/* checking if list is empty */
+	if (*temp == NULL || (*temp != NULL && (*temp)->next == NULL))
 	{
-		printf("L%d: can't add, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
+	second = (*temp)->next;
 	second->n += first->n;
 	*temp = (*temp)->next;
 
